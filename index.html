@@ -6,14 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ngClassifieds</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/mdi/css/materialdesignicons.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
 </head>
 
-<body ng-app="ngClassifieds" ng-controller="classifiedCtrl">
-    <hello-world></hello-world>
+<body ng-app="ngClassifieds">
+
+   <ui-view></ui-view>
+
     <script src="node_modules/angular/angular.js"></script>
-    <script src="node_modules/angular-material/angular-material.js"></script>    
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="scripts/app.js"></script>
-    <script src="components/classifieds.ctr.js"></script>
+    <script src="components/classifieds/classifieds.ctr.js"></script>
+    <script src="components/new/classifieds.new.ctr.js"></script>
+    <script src="components/edit/classifieds.edit.ctr.js"></script>
+    <script src="components/classifieds/classifieds.fac.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 </body>
 
 </html>

@@ -1,11 +1,27 @@
-angular.module("ngClassifieds",["ngMaterial"])
-    .config(function($mdThemingProvider){
+angular.module("ngClassifieds", ['ngMaterial', 'ngMessages', 'ui.router'])
+    .config(function ($mdThemingProvider, $stateProvider) {
         $mdThemingProvider.theme('default')
-            .primaryPallete('teal')
-            .accentPallete('orange');
-    })
-    .directive("helloWorld", function(){
-        return {
-            template : "<h1> {{message}} </h1>"
-        }
-    })
+            .primaryPalette('teal')
+            .accentPalette('orange');
+
+        $stateProvider
+            .state('classifieds',{
+                url: '/classifieds',
+                templateUrl: '../components/classifieds/classifieds.tpl.html',
+                controller: 'classifiedsCtrl as vm'
+            })  
+            .state('classifieds.edit',{
+                url: '/edit/:id',
+                templateUrl: '../components/edit/classifieds.edit.tpl.html',
+                controller: 'editClassifiedsCtrl as vm',
+                params :{                    
+                    classified : null
+                }
+            })
+            .state('classifieds.new',{
+                url: '/new',
+                templateUrl: '../components/new/classifieds.new.tpl.html',
+                controller: 'newClassifiedsCtrl as vm'
+            });
+                   
+    });
