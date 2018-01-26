@@ -24,6 +24,7 @@
                 });
             }
         });
+
         function closeSidebar(){
             vm.sidenavOpen = false;
         }
@@ -35,7 +36,7 @@
                 $scope.sidenavOpen = false;
             } 
         }
-
+       
         
     });
 })();

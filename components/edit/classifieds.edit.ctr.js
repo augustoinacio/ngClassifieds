@@ -1,7 +1,7 @@
 (function () {
     "use strict";
     angular.module('ngClassifieds')
-        .controller('editClassifiedsCtrl', function ($scope, $mdSidenav, $state, $mdToast, $timeout) {
+        .controller('editClassifiedsCtrl', function ($state, $scope, $mdSidenav, $mdDialog, $timeout, classifiedsFactory) {
             var vm = this;
 
             vm.closeSidebar = closeSidebar;
@@ -20,13 +20,24 @@
                 $mdSidenav('left').open();
             });
 
+            $scope.$watch('sidenavOpen', function (sidenavOpen) {
+                if (sidenavOpen === false) {
+                    $mdSidenav('left')
+                        .close()
+                        .then(function () {
+                            $state.go('classifieds');
+                        });
+                }
+            });
+
             function closeSidebar() {
+                vm.classified = {};
                 vm.sidenavOpen = false;
             }
 
             function saveEdit() {
-                $scope.$emit('editSaved', 'Edit Saved!');
                 vm.sidenavOpen = false;
+                $scope.$emit('editSaved', 'Edit Saved!');
             }
         });
 })();

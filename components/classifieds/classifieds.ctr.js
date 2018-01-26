@@ -2,7 +2,7 @@
     "use strict";
     angular
         .module('ngClassifieds')
-        .controller('classifiedsCtrl', function ($scope, $state, classifiedsFactory, $timeout, $mdSidenav, $mdToast, $mdDialog) {
+        .controller('classifiedsCtrl', function ($scope, $state, $http, classifiedsFactory, $timeout, $mdSidenav, $mdToast, $mdDialog) {
             var vm = this;
 
             vm.categories;
@@ -19,6 +19,7 @@
                 vm.classifieds = classifieds.data;
                 vm.categories = getCategories(vm.classifieds);
             });
+            
             
             $scope.$on('newClassified', function(event, classified){
                 classified.id = vm.classifieds.length + 1 ;
@@ -46,8 +47,7 @@
 
             function editClassified(classified) {
                 $state.go('classifieds.edit', {
-                    id: classified.id,
-                    classified: classified
+                    id: classified.id
                 });
             }
 
